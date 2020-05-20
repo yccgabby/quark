@@ -1,2 +1,2 @@
 # quark
-a personalized thrifting experience
+a clothing classifer, to be expanded to a personalized thrifting experience
