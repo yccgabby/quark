@@ -1,24 +1,24 @@
 import React from 'react';
-import img from "./images/button.png"; 
+import img from "./images/masculine.png"; 
 import {Link} from 'react-router-dom'
 
 class MyNavBar extends React.Component {
     render() {
         return (
-            <nav class="navbar navbar-expand-lg sticky-top navbar-light" style={navStyle}>
-                <a class="navbar-brand" href="#" style={wordStyle}>
-                    <img src={img} width="60" height="60" class="d-inline-block align-top" alt=""></img>quark
+            <nav className="navbar navbar-expand-lg navbar-light" style={navStyle}> {/* make it sticky top later */}
+                <a className="navbar-brand" href="/" style={wordStyle}>
+                    <img src={img} width="40" height="40" className="d-inline-block align-center" alt=""></img>quark
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav" id='bs-example-navbar-collapse-2'>
-                        <li class="nav-item active">
-                            <Link to="/" style={navItemWordStyle}>About</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto" id='bs-example-navbar-collapse'>
+                        <li className="nav-item active">
+                            <Link to="/" style={navItemWordStyle} className='nav-link'>Home</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link to="/upload" style={navItemWordStyle}>Upload</Link>
+                        <li className="nav-item active">
+                            <Link to="/upload" style={navItemWordStyle} className='nav-link'>Upload</Link>
                         </li>
                     </ul>
                 </div>
@@ -28,17 +28,17 @@ class MyNavBar extends React.Component {
 }
 
 const navStyle = {
-    backgroundColor: '#ecd6c7',
+    backgroundColor: '#252627',
     padding: '5px'
 }
 
 const navItemWordStyle = {
-    color: '#ff734f',
+    color: '#e0503f',
     fontSize: 20
 }
 
 const wordStyle = {
-    color: '#ff734f',
+    color: '#e0503f',
     fontSize: 40,
     marginLeft: 20
 }
