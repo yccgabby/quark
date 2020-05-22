@@ -5,9 +5,8 @@ import bggif from './images/bg.gif';
 class Home extends React.Component {
     render() {
         return (
-                <div style={{position: 'relative', outline: '0px'}}>
+                <div style={{position: 'relative', outline: '0px', overflow: 'hidden'}}>
                     <img src={bggif} alt="" style={{minWidth: '100%', minHeight: '90vh', class: 'center', marginLeft: 'auto', marginRight: 'auto', display: 'block'}}/>
-                    <div style={rectHeader}></div>
                     <h1 style={headerStyle}>personalized <a href='https://www.thegoodtrade.com/features/thrift-shopping-tips' style={{color:'#aaaaaa'}} target="_blank" rel="noopener noreferrer">thrifting</a> experience</h1>
                     <h2 style={headerStyle.smallerStyle}>
                         <Typical steps={[
@@ -27,14 +26,14 @@ class Home extends React.Component {
     }
 }
 
-const rectHeader = {
-    position: 'absolute',
-    top: '28%',
-    left: '12%',
-    height: '19vmin 20vmax',
-    width: '76vw',
-    backgroundColor: '#252627'
-}
+// const rectHeader = {
+//     position: 'absolute',
+//     top: '28%',
+//     left: '12%',
+//     height: '19vmin 20vmax',
+//     width: '76vw',
+//     backgroundColor: '#252627'
+// }
 
 const headerStyle = {
     position: 'absolute',
@@ -44,9 +43,9 @@ const headerStyle = {
     textAlign: 'center',
     fontFamily: 'Roboto',
     fontSize: '9vh',
-    paddingLeft: '8%',
-    paddingRight: '16%',
-    textShadow: '3px 3px 20px #000',
+    paddingLeft: '9%',
+    paddingRight: '18%',
+    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
     smallerStyle: {
         position: 'absolute',
         bottom: '10%',
@@ -54,8 +53,8 @@ const headerStyle = {
         color: '#e0503f',
         textAlign: 'center',
         width: '80%',
-        textShadow: '3px 3px 10px #000',
         paddingBottom: '9%',
+        textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
         fontSize: '4vh'
     }
 };
