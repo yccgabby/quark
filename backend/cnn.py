@@ -55,4 +55,5 @@ m.fit(train_dataset, epochs=10, steps_per_epoch=math.ceil(train_sets/BATCH_SIZE)
 test_loss, test_accuracy = m.evaluate(test_dataset, steps=math.ceil(test_sets/32))
 print('accuracy on test dataset: ', test_accuracy)
 
+m.save('./backend/model.h5')
 tf.saved_model.save(m, './backend')
