@@ -1,5 +1,6 @@
 # Quark
 
+![homepage](https://github.com/yccgabby/quark/blob/master/screenshots/Screen%20Shot%202020-05-22%20at%203.24.18%20AM.png)
 <h3>A passion of mine is ethical, sustainable fashion through the art of thrifting.</h3> 
 
 It helps me find vintage treasures, encourages spending less money on second-hand clothes, and helps the planet! 
@@ -21,6 +22,8 @@ Meet **Quark**, a personalized thrifting platform aimed to bring together online
 * [Bootstrap](https://getbootstrap.com/)
 
 In other words, it's a full-stack application designed in responsive (mobile-friendly) practices and lightweight server processing
+
+![mobile](https://github.com/yccgabby/quark/blob/master/screenshots/mobile.png)
 
 ## Getting started 
 
@@ -59,10 +62,14 @@ npm start
 * Upload a picture of a piece of clothing to the *upload* tab of the app, and the program will 
   * try to classify the type of clothing it is based on a pre-trained Tensorflow CNN
   * generate a five-color palette that complements the article of clothing
+ 
+![upload](https://github.com/yccgabby/quark/blob/master/screenshots/Screen%20Shot%202020-05-22%20at%203.27.31%20AM.png)
+![upload2](https://github.com/yccgabby/quark/blob/master/screenshots/Screen%20Shot%202020-05-22%20at%203.27.58%20AM.png)
 
 ## Contact 
 
 Gabby Chan - a current systems design engineering student at the University of Waterloo
+
 Feel free to email me at g44chan @ uwaterloo dot ca 
 
 Project link: http://github.com/yccgabby/quark.git
