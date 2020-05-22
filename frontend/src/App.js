@@ -15,6 +15,8 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/upload' component={Upload}/>
+          <Route exact path='/api/upload' component={Upload}/>
+          <Route exact path='/api/article' component={Upload}></Route>
         </Switch>
         <Footer/>
       </Router>
