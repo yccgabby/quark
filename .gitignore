@@ -1,2 +1,6 @@
 .vscode
 frontend/node_modules
+backend/resized.png
+backend/assets/colors.txt
+backend/assets/article.txt
+backend/clothing.png
