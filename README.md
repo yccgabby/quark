@@ -20,6 +20,7 @@ Meet **Quark**, a personalized thrifting platform aimed to bring together online
 * [Tensorflow](https://www.tensorflow.org/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Bootstrap](https://getbootstrap.com/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
 
 In other words, it's a full-stack application designed in responsive (mobile-friendly) practices and lightweight server processing
 
