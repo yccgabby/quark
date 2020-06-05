@@ -17,7 +17,7 @@ def classify(image):
     # needs to convert image to something that can be analyzed
     reloaded = tf.keras.models.load_model(
     './backend/model.h5')
-    model_class = np.argmax(reloaded.predict(image), axis=-1)
-    prediction = model_class[0]
+    model_class = np.argmax(reloaded.predict(image))
+    prediction = model_class
     class_names = ['top', 'pair of pants', 'pullover', 'dress', 'coat', 'sandal', 'shirt', 'sneaker', 'bag', 'boot']
     return class_names[prediction]
