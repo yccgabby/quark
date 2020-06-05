@@ -26,15 +26,6 @@ class Home extends React.Component {
     }
 }
 
-// const rectHeader = {
-//     position: 'absolute',
-//     top: '28%',
-//     left: '12%',
-//     height: '19vmin 20vmax',
-//     width: '76vw',
-//     backgroundColor: '#252627'
-// }
-
 const headerStyle = {
     position: 'absolute',
     top: '37%',

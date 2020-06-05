@@ -1,4 +1,4 @@
-from backend import app
+from backend import app, db, results
 from flask_cors import CORS
 from flask import render_template, flash, redirect, url_for, request
 from backend import classify 
@@ -11,52 +11,52 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 import json
 import ast
+from random import randint
 
 CORS(app)
 
 @app.route('/api/upload', methods=['GET','POST', 'DELETE'])
 def upload():
     if request.method == 'POST':
-        request.files.get('filepond').save('./backend/clothing.png')
-        c = colors.palette('./backend/clothing.png')
-        with open('./backend/assets/colors.txt', 'w+') as f:
-            json_string = json.dumps(c)
-            obj = json.loads(json_string)
-            obj = str(obj['result'])
-            obj = ast.literal_eval(obj)
-            for rgb in obj:
-                rgb = tuple(rgb)
-                one_hex_color = '#%02x%02x%02x' % rgb
-                f.write(one_hex_color)
-                f.write(' ')
-        img = Image.open('./backend/clothing.png').convert('L')
+        request.files.get('filepond').save('./backend/test/clothing.png')
+        c = colors.palette('./backend/test/clothing.png')
+        colors_text = ""
+        json_string = json.dumps(c)
+        obj = json.loads(json_string)
+        obj = str(obj['result'])
+        obj = ast.literal_eval(obj)
+        for rgb in obj:
+            rgb = tuple(rgb)
+            one_hex_color = '#%02x%02x%02x' % rgb
+            colors_text = colors_text + one_hex_color + " "
+        img = Image.open('./backend/test/clothing.png').convert('L')
         img = crop_max_square(img)
         img = img.resize((28, 28), Image.ANTIALIAS)
-        imageio.imwrite('./backend/resized.png', img)
+        imageio.imwrite('./backend/test/resized.png', img)
         img = np.resize(img, (28, 28, 28, 1))
         article = classify.classify(img)
-        print('this is a', article, '!')
-        with open('./backend/assets/article.txt', 'w+') as f:
-            f.write(article)
+        result = results(int(randint(0, 10000000000)), article, colors_text)
+        db.session.add(result)
+        db.session.commit()
         return article
     else:
         return {'hi':'hi'}
 
 @app.route('/api/article', methods=['GET'])
 def getArticle():
-    with open('./backend/assets/article.txt', 'r') as f:
-        if f.readline is None: 
-            return None
-        else:
-            word = f.read()
-            return str(word)
+    u = db.session.query(results).all()
+    if str(u[-1].__dict__['article']) != "" :
+        return str(u[-1].__dict__['article'])
+    else:
+        return None
 
 @app.route('/api/colors', methods=['GET'])
 def getColors():
-    c_array = {}
-    with open('./backend/assets/colors.txt', 'r') as f: 
-        c_array = f.read()
-        return str(c_array)
+    u = db.session.query(results).all()
+    if str(u[-1].__dict__['colors']) != "" :
+        return str(u[-1].__dict__['colors'])
+    else:
+        return None
 
 def crop_center(pil_img, crop_width, crop_height):
     img_width, img_height = pil_img.size
