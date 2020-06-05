@@ -23,6 +23,7 @@ class Upload extends React.Component {
         super(props);
     
         this.state = {
+          buttonShow: false,
           files: [],
           fileExists: false,
           article: null,
@@ -47,9 +48,9 @@ class Upload extends React.Component {
         axios.get('http://localhost:5000/api/colors')
         .then(response => {
             console.log(response.data)
-            let fun = JSON.stringify(response.data)
-            console.log(fun)
-            let colors_array = fun.split(" ")
+            let get_response = JSON.stringify(response.data)
+            console.log(get_response)
+            let colors_array = get_response.split(" ")
             colors_array[0] = colors_array[0].substring(1)
             colors_array.pop()
             console.log(colors_array)
@@ -89,24 +90,36 @@ class Upload extends React.Component {
                                             ref={ref => (this.pond = ref)}
                                             files={this.state.files}
                                             allowMultiple={false}
-                                            maxFiles={3}
+                                            //maxFiles={3}
                                             server="http://localhost:5000/api/upload"
                                             oninit={() => this.handleInit()}
                                             onupdatefiles={fileItems => {
                                                 // Set currently active file objects to this.state
                                                 this.setState({
-                                                    files: fileItems.map(fileItem => fileItem.file), 
+                                                    files: fileItems.map(fileItem => fileItem.file)
                                                 });
+                                            }}
+                                            onprocessfile={file => {
+                                                this.setState({
+                                                    buttonShow: true
+                                                })
+                                            }}
+                                            onremovefile={file => {
+                                                this.setState({
+                                                    files: null,
+                                                    buttonShow: false,
+                                                    article: null
+                                                })
                                             }}
                                             />
                                     </div>
                                 </div>
                             </Col>
                             <Col sm={6}>
-                                <div style={{margin: 60}}>
+                                {this.state.buttonShow && <div style={{margin: 60}}>
                                     <button type="button" className="btn btn-secondary btn-lg btn-block" style={{color: '#ahf3rk'}} onClick={() =>
                                     this.chainedFunc()}>Show Results!</button>
-                                </div>
+                                </div>}
                                 {this.state.article && <div style={summary}>
                                     <p>the program thinks it is a {this.state.article}!</p>
                                     <br></br>
