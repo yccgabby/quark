@@ -56,4 +56,4 @@ test_loss, test_accuracy = m.evaluate(test_dataset, steps=math.ceil(test_sets/32
 print('accuracy on test dataset: ', test_accuracy)
 
 m.save('./backend/model.h5')
-tf.saved_model.save(m, './backend')
+# tf.saved_model.save(m, './backend')
